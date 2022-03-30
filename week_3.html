@@ -1,0 +1,32 @@
+<!doctype HTML>
+<html>
+  <script src="aframe/aframe.min.js"></script>
+  <!--script src="AR.js-master/aframe/build/aframe-ar.js"></script>-->
+    <a-scene webxr='requiredFeatures: hit-test, local-floor;
+             optionalFeatures: dom-overlay, unbounded;
+             overlayElement: #overlay;>
+
+    <!-- embedded arjs='trackingMethod: best; sourceType: webcam; sourceUrl: 
+    Ar.js-master/data/images/img.jpg sourceWidth: 800; sourceHeight: 600'-->
+
+         <a-box position='0 0.5 0' scale="4 4 4" material='color: red;'></a-box>
+    <a-marker preset="hiro">
+            <a-box position='0 0.5 0' scale="0.2 0.2 0.2" material='color: blue;'></a-box>
+            <a-torus color="green" radius="0.5" position="-1 1 0" 
+            animation="property: rotation; to: 360 360 360; loop: true; dur: 7000"></a-torus>
+            <a-plane color="purple" height="1" width="1" position="0 0 -1" rotation="-90 0 0"></a-plane>
+            <a-text value="Bye, Cruel World!" rotation="-90 0 0" color="yellow" width="1" position="-1 0 0.75"
+            animation="property: position; to: 1 0 0.75; loop: true; dur: 10000"></a-text>
+
+     <!--
+        <a-cone position="1 1 -5" color="orange" wireframe="false" segments-height="8" segments-radial="4"></a-cone>
+        <a-cylinder color="yellow" height="1.9" radius="0.05" position="-2 1- 5"></a-cylinder>
+        <a-image src="https://live.staticflickr.com/6001/5929632971_20466b7f19.jpg" position="3 1 -5" width="3.14159"
+         height="2" rotation "0 90 0"></a-image>
+        <a-light type="point" color="white" position="-3 -3 0" intensity="2"></a-light>
+        <a-torus-knot color="#BB4A39" arc="180" p="2" q="7" radius="5" radius-tubular="0.1" position="-0.5 4 8"></a-torus-knot>
+      -->
+    </a-marker>
+    </a-entity camera></a-entity>
+    </a-scene>
+</html>
