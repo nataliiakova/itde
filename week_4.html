@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <meta charset="utf-8">
-    <src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script type="text/javascript">
         const day = 24.0*60*60; //тривалість земного дня у секундах
         AFRAME.registerComponent('planet', {
@@ -59,7 +59,7 @@ AFRAME.registerComponent('main', {
 
 <a-scene>
    <a-sky color="black"></a-sky>
-   <a-camera position="0 0 1000" cursor-visible="true" cursorscale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
+   <a-camera position="0 0 800" cursor-visible="true" cursorscale="2" cursor-color="#0095DD" cursor-opacity="0.5"></a-camera>
    <a-entity geometry="primitive: sphere; radius: 20.510"
      material="color: yellow" planet="dist: 0; mass: 1.989e30; name:
      Sun"></a-entity>
@@ -72,6 +72,21 @@ AFRAME.registerComponent('main', {
    <a-entity geometry="primitive: sphere; radius: 6.371"
      material="color: cyan" planet="dist: 149.6e9; mass: 6e24; T: 365;
      name: Earth"></a-entity>
+    <a-entity geometry="primitive: sphere; radius: 3.389"
+     material="color: red" planet="dist: 228e9; mass: 6.4e23; T: 686.94;
+     name: Mars"></a-entity>
+     <a-entity geometry="primitive: sphere; radius: 69.911"
+     material="color: #FFFACD" planet="dist: 779e9; mass: 1.9e27; T: 4380;
+     name: Jupiter"></a-entity>
+     <a-entity geometry="primitive: sphere; radius: 58.232"
+     material="color: #FFFFE0" planet="dist: 1430e9; mass: 5.7e26; T: 10585;
+     name: Saturn"></a-entity>
+     <a-entity geometry="primitive: sphere; radius: 25.362"
+     material="color: #AFEEEE" planet="dist: 2.8e12; mass: 8.68e25; T: 30660;
+     name: Uranus"></a-entity>
+     <a-entity geometry="primitive: sphere; radius: 24.622"
+     material="color: #4682B4" planet="dist: 2.8e12; mass: 1.02e26; T: 60225;
+     name: Neptune"></a-entity>
    <a-entity main></a-entity>
 </a-scene>
 
