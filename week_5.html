@@ -3,8 +3,7 @@
 <meta charset="utf-8">
 <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/
-aframe-particle-system-component.min.js"></script> 
+<script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script> 
 <script type="text/javascript">
     window.addEventListener('camera-init', (data) => {
      console.log('camera-init', data);
@@ -36,8 +35,7 @@ aframe-particle-system-component.min.js"></script>
       <!--a-box position="0 0.5 0" material="color: red; "><a-box>-->
       <a-entity position="0 0.5 0" geometry="primitive: box; width: 1; height: 1; depth:1" material="
       color: red; "></a-entity> 
-      <a-entity position="0 1.5 -1.5" particle-system="preset: dust; color: yellow; size: 3;"></
-      a-entity>       
+      <a-entity position="0 1.5 -1.5" particle-system="preset: dust; color: yellow; size: 3;"></a-entity>       
     </a-marker>
 
     <a-marker preset="kanji" registerevents id="kanji">
@@ -45,7 +43,7 @@ aframe-particle-system-component.min.js"></script>
       <a-entity position="0 1.5 -1.5" particle-system="preset: snow; color: #0000F0; size: 3;"></a-entity>    
     </a-marker>
 
-    <a-marker type="pattern" url='pattern-Энкели.patt' registerevents id="pattern'>
+    <a-marker type="pattern" url='pattern-Энкели.patt'>
      <a-entity geometry="primitive: box" material="color: red"
      animation__mouseenter="property: rotation; from:0 0 0; to: 0 0
      360; startEvents: mouseenter; dur: 1000"; animation__mouseleave=
@@ -57,5 +55,5 @@ aframe-particle-system-component.min.js"></script>
      <a-cursor></a-cursor>
   </a-entity>
   <a-entity hiro-detected></a-entity>
- </a=scene>
+ </a-scene>
 </html>
