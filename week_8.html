@@ -3,7 +3,8 @@
         <head><title>threeJS shaders</title></head>
 <body>
         <canvas id="Canvas"></canvas>
-        <script src="https://threejs.org/build/three.min.js"></script>
+        <script src="https://threejs.org/build/three.js"></script>
+	<script src="js/three.js"></script>
 
  <!-- Вершинний шейдер -->
         <script type="x-shader/x-vertex" id="vertexShader">
@@ -47,7 +48,7 @@
       	fragmentShader: document.getElementById('fragmentShader').textContent
       });
       
-      var boxgeometry=new THREE.BoxBufferGeometry(100, 100, 100, 10, 10, 10);
+      var boxgeometry=new THREE.BoxGeometry(100, 100, 100, 10, 10, 10);
       var boxmesh=new THREE.Mesh(boxgeometry, customMat);
       boxmesh.position.set(-100, 0, -1000);
       scene.add(boxmesh);
