@@ -27,7 +27,8 @@ function init()
 	var light = new THREE.PointLight(0xffffff);
 	light.position.set(-100, 200, 100);
 	scene.add(light);
-
+        
+	var loader = new THREE.TextureLoader();
 	var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
 	loader.load (fandom.jpeg, (texture) => {
 		var cylmaterial = new THREE.MeshLambertMaterial({
