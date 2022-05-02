@@ -21,6 +21,8 @@ function init()
 	        camera.aspect = WIDTH / HEIGHT;
 	        camera.updateProjectMatrix();
 	});
+	
+	var loader = new THREE.TextureLoader();
 
 	renderer.setClearColor(0x333F47, 1); //встановити колір фону холсту
 	
@@ -28,9 +30,8 @@ function init()
 	light.position.set(-100, 200, 100);
 	scene.add(light);
         
-	var loader = new THREE.TextureLoader();
 	var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
-	loader.load (fandom.jpeg, (texture) => {
+	loader.load ("https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/disturb.jpg", (texture) => {
 		var cylmaterial = new THREE.MeshLambertMaterial({
 			map: texture,
 		});
