@@ -31,10 +31,10 @@ function init()
 	scene.add(light);
         
 	var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
-	loader.load ("fandom.jpeg", (texture) => {
-		var cylmaterial = new THREE.MeshLambertMaterial({
-			map: texture,
-		});
+	var cylmaterial = new THREE.MeshLambertMaterial({map: loader.load('fandom.jpeg')}); //=> {
+		//var cylmaterial = new THREE.MeshLambertMaterial({
+		//	map: texture,
+		//});
 		var cylmesh = new THREE.Mesh(cylgeometry, cylmaterial);
 		cylmesh.position.set(0.9, -5, -6);
 	    scene.add(cylmesh);
