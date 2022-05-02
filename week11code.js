@@ -31,7 +31,7 @@ function init()
 	scene.add(light);
         
 	var cylgeometry = new THREE.CylinderGeometry(3, 3, 7, 7);
-	loader.load ("https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/textures/disturb.jpg", (texture) => {
+	loader.load ("fandom.jpeg", (texture) => {
 		var cylmaterial = new THREE.MeshLambertMaterial({
 			map: texture,
 		});
