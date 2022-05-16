@@ -5,7 +5,6 @@
 </head>
 <body>
 	<canvas id="Canvas"></canvas>
-	<script src="OrbitControls.js"></script>
 	<script src="https://threejs.org/build/three.min.js"></script>
 	<script src="https://raw.githack.com/mrdoob/three.js/dev/examples/js/loaders/OBJLoader.js"></script>
 <script>
@@ -25,7 +24,7 @@
 scene.add(lightTwo);
 
 	var objLoader = new THREE.OBJLoader();
-	objLoader.load("models/steyerdorf.obj", function(mesh){
+	objLoader.load("steyerdorf.obj", function(mesh){
 		mesh.traverse(function(node){
 			if(node instanceof THREE.Mesh){
 				node.castShadow = true;
