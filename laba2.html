@@ -44,19 +44,30 @@
   spotLight.position.set( 300, 200, 300 );
   scene.add( spotLight );
 
-  const spotLightHelper = new THREE.SpotLightHelper( spotLight );
+ const spotLightHelper = new THREE.SpotLightHelper( spotLight );
   scene.add( spotLightHelper );
+const clock = new THREE.Clock();
+const animate = () => {
+  const elapsed = clock.getElapsedTime();
+    sphere.position.x += .5 * elapsed;
+   // sphere.position.y += .5 * elapsed;
+    sphere.position.z += .5 * elapsed;
+
+render.render(scene, camera);
+window.requestAnimationFrame(animate)
+}
+animate()
 
 
 
-  animation(); 
+ /* animation(); 
 
   function animation(){
     requestAnimationFrame(animation);
-    sphere.rotation.y += 180/Math.PI*0.0001;
+    //sphere.rotation.y += 180/Math.PI*0.0001;
     render.render(scene, camera);
   }
-/*var r = 50;
+var r = 50;
 var theta = 0;
 var dTheta = 2 * Math.PI / 1000;
 
