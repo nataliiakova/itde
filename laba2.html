@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+ <meta charset="UTF-8">
+ <script src="https://threejs.org/build/three.min.js"></script>
+</head>
+<body>
+ <script>
+  var scene, camera;
+
+  const render = new THREE.WebGLRenderer();
+  render.setSize(window.innerWidth, window.innerHeight);
+  document.body.appendChild(render.domElement);
+
+  camera = new THREE.PerspectiveCamera(70, window.innerWidth/window.innerHeight, 0.1, 1000);
+  
+  camera.position.y = 0;
+  camera.position.z = 400;
+
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color( 0x4b0082 );
+
+  //LHC
+  var torus_geometry = new THREE.TorusGeometry(100, 20, 160, 500);
+  var torus_texture = new THREE.MeshBasicMaterial({color: 0xffff66, transparent: true, opacity: 0.3});
+  var torus = new THREE.Mesh(torus_geometry, torus_texture);
+  scene.add(torus);
+
+  //Proton1
+  var sphere_geometry = new THREE.SphereGeometry(8,32,16);
+  var sphere_material=new THREE.MeshToonMaterial({color: 0x0099ff});
+  var sphere = new THREE.Mesh(sphere_geometry,sphere_material);
+  sphere.position.x = -100;
+  scene.add(sphere);
+ 
+  //Proton2
+  var sphere_geometry = new THREE.SphereGeometry(8,32,16);
+  var sphere_material=new THREE.MeshToonMaterial({color: 0x0099ff});
+  var sphere = new THREE.Mesh(sphere_geometry,sphere_material);
+  sphere.position.x = 100;
+  scene.add(sphere);
+
+  //Spotlight
+  const spotLight = new THREE.SpotLight( 0xffff92);
+  spotLight.position.set( 300, 200, 300 );
+  scene.add( spotLight );
+
+  const spotLightHelper = new THREE.SpotLightHelper( spotLight );
+  scene.add( spotLightHelper );
+
+
+
+  animation(); 
+
+  function animation(){
+    requestAnimationFrame(animation);
+    sphere.rotation.y += 180/Math.PI*0.0001;
+    render.render(scene, camera);
+  }
+/*var r = 50;
+var theta = 0;
+var dTheta = 2 * Math.PI / 1000;
+
+var render = function() {       
+  theta += dTheta;
+  sphere.position.x = r * Math.cos(theta);
+  sphere.position.z = r * Math.sin(theta);
+renderer.render(scene, camera);
+  requestAnimationFrame(render);
+};
+render();
+function animate(){
+  sphere.rotateY(0.004);
+
+  renderer.render(scene, camera);
+}*/
+
+ </script>
+</body>
+</html>
