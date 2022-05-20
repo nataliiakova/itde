@@ -2,27 +2,40 @@
 <head>
  <meta charset="UTF-8">
  <script src="https://threejs.org/build/three.min.js"></script>
+ <script src="OrbitControls.js"></script>
 </head>
 <body>
  <script>
   var scene, camera;
 
-  const render = new THREE.WebGLRenderer();
-  render.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(render.domElement);
-
-  camera = new THREE.PerspectiveCamera(70, window.innerWidth/window.innerHeight, 0.1, 1000);
-  
-  camera.position.y = 0;
-  camera.position.z = 400;
-
   scene = new THREE.Scene();
   scene.background = new THREE.Color( 0x4b0082 );
+
+  var WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
+  const render = new THREE.WebGLRenderer();
+  render.setSize(WIDTH, HEIGHT);
+  document.body.appendChild(render.domElement);
+
+
+  camera = new THREE.PerspectiveCamera(70, WIDTH/ HEIGHT, 0.1, 1000);
+  camera.position.set (0,0,250);
+  camera.rotation.set(0,270,270);
+  scene.add(camera);
+
+
+window.addEventListener('resize', function() {
+          var WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
+          renderer.setSize(WIDTH, HEIGHT);
+          camera.aspect = WIDTH / HEIGHT;
+          camera.updateProjectMatrix();
+  });
+
 
   //LHC
   var torus_geometry = new THREE.TorusGeometry(100, 20, 160, 500);
   var torus_texture = new THREE.MeshBasicMaterial({color: 0xffff66, transparent: true, opacity: 0.3});
   var torus = new THREE.Mesh(torus_geometry, torus_texture);
+//  torus.rotation.set(90,0,0);
   scene.add(torus);
 
   //Proton1
@@ -37,7 +50,9 @@
   var sphere_material=new THREE.MeshToonMaterial({color: 0x0099ff});
   var sphere = new THREE.Mesh(sphere_geometry,sphere_material);
   sphere.position.x = 100;
+  //sphere.rotation.set(90,0,0);
   scene.add(sphere);
+
 
   //Spotlight
   const spotLight = new THREE.SpotLight( 0xffff92);
@@ -46,44 +61,27 @@
 
  const spotLightHelper = new THREE.SpotLightHelper( spotLight );
   scene.add( spotLightHelper );
-const clock = new THREE.Clock();
-const animate = () => {
-  const elapsed = clock.getElapsedTime();
-    sphere.position.x += .5 * elapsed;
-   // sphere.position.y += .5 * elapsed;
-    sphere.position.z += .5 * elapsed;
 
+  var light = new THREE.PointLight(0xffffff);
+  light.position.set(-100, 200, 100);
+  scene.add(light);
+
+var t = 0;
+//const clock = new THREE.Clock();
+const animate = () => {
+ // const elapsed = clock.getElapsedTime();
+  //  sphere.position.x += Math.cos(1*elapsed)*-0.8;
+  //  sphere.position.y += Math.cos(1*elapsed)*0.6;
+   // sphere.position.z += Math.sin(1*elapsed)*0.1;
+    t += 0.1;  
+    sphere.position.x = 100*Math.sin(t);
+    sphere.position.y = 100*Math.cos(t);
+  //  sphere.rotation.set(0,0,90);
+  sphere.rotateY(0.004);
 render.render(scene, camera);
 window.requestAnimationFrame(animate)
 }
 animate()
-
-
-
- /* animation(); 
-
-  function animation(){
-    requestAnimationFrame(animation);
-    //sphere.rotation.y += 180/Math.PI*0.0001;
-    render.render(scene, camera);
-  }
-var r = 50;
-var theta = 0;
-var dTheta = 2 * Math.PI / 1000;
-
-var render = function() {       
-  theta += dTheta;
-  sphere.position.x = r * Math.cos(theta);
-  sphere.position.z = r * Math.sin(theta);
-renderer.render(scene, camera);
-  requestAnimationFrame(render);
-};
-render();
-function animate(){
-  sphere.rotateY(0.004);
-
-  renderer.render(scene, camera);
-}*/
 
  </script>
 </body>
