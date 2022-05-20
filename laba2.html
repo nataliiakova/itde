@@ -12,7 +12,7 @@
   scene.background = new THREE.Color( 0x4b0082 );
 
   var WIDTH = window.innerWidth, HEIGHT = window.innerHeight;
-  const render = new THREE.WebGLRenderer();
+  render = new THREE.WebGLRenderer({antialias: true});
   render.setSize(WIDTH, HEIGHT);
   document.body.appendChild(render.domElement);
 
@@ -30,16 +30,17 @@ window.addEventListener('resize', function() {
           camera.updateProjectMatrix();
   });
 
+  var loader = new THREE.TextureLoader();
 
   //LHC
   var torus_geometry = new THREE.TorusGeometry(100, 20, 160, 500);
-  var torus_texture = new THREE.MeshBasicMaterial({color: 0xffff66, transparent: true, opacity: 0.3});
+  var torus_texture = new THREE.MeshBasicMaterial({map: loader.load('https://ichef.bbci.co.uk/news/640/cpsprodpb/5906/production/_124209722_higgs-simulation.jpg'), transparent: true, opacity: 0.3});
   var torus = new THREE.Mesh(torus_geometry, torus_texture);
   scene.add(torus);
 
   //Proton1
   var proton_geometry = new THREE.SphereGeometry(8,32,16);
-  var proton_material=new THREE.MeshToonMaterial({color: 0x0099ff});
+  var proton_material=new THREE.MeshLambertMaterial({color: 0x0099ff});
   var proton= new THREE.Mesh(proton_geometry,proton_material);
   proton.position.x = -100;
   scene.add(proton);
@@ -59,11 +60,13 @@ window.addEventListener('resize', function() {
 
  const spotLightHelper = new THREE.SpotLightHelper( spotLight );
   scene.add( spotLightHelper );
-
+  
+  //light
   var light = new THREE.PointLight(0xffffff);
   light.position.set(-100, 200, 100);
   scene.add(light);
 
+  //Animate
 var t = 0;
 const animate = () => {
     t += 0.1;  
