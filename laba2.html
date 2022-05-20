@@ -35,22 +35,20 @@ window.addEventListener('resize', function() {
   var torus_geometry = new THREE.TorusGeometry(100, 20, 160, 500);
   var torus_texture = new THREE.MeshBasicMaterial({color: 0xffff66, transparent: true, opacity: 0.3});
   var torus = new THREE.Mesh(torus_geometry, torus_texture);
-//  torus.rotation.set(90,0,0);
   scene.add(torus);
 
   //Proton1
-  var sphere_geometry = new THREE.SphereGeometry(8,32,16);
-  var sphere_material=new THREE.MeshToonMaterial({color: 0x0099ff});
-  var sphere = new THREE.Mesh(sphere_geometry,sphere_material);
-  sphere.position.x = -100;
-  scene.add(sphere);
+  var proton_geometry = new THREE.SphereGeometry(8,32,16);
+  var proton_material=new THREE.MeshToonMaterial({color: 0x0099ff});
+  var proton= new THREE.Mesh(proton_geometry,proton_material);
+  proton.position.x = -100;
+  scene.add(proton);
  
   //Proton2
   var sphere_geometry = new THREE.SphereGeometry(8,32,16);
   var sphere_material=new THREE.MeshToonMaterial({color: 0x0099ff});
   var sphere = new THREE.Mesh(sphere_geometry,sphere_material);
   sphere.position.x = 100;
-  //sphere.rotation.set(90,0,0);
   scene.add(sphere);
 
 
@@ -67,17 +65,12 @@ window.addEventListener('resize', function() {
   scene.add(light);
 
 var t = 0;
-//const clock = new THREE.Clock();
 const animate = () => {
- // const elapsed = clock.getElapsedTime();
-  //  sphere.position.x += Math.cos(1*elapsed)*-0.8;
-  //  sphere.position.y += Math.cos(1*elapsed)*0.6;
-   // sphere.position.z += Math.sin(1*elapsed)*0.1;
     t += 0.1;  
     sphere.position.x = 100*Math.sin(t);
     sphere.position.y = 100*Math.cos(t);
-  //  sphere.rotation.set(0,0,90);
-  sphere.rotateY(0.004);
+    proton.position.y = 100*Math.sin(t);
+    proton.position.x = 100*Math.cos(t);
 render.render(scene, camera);
 window.requestAnimationFrame(animate)
 }
@@ -85,4 +78,4 @@ animate()
 
  </script>
 </body>
-</html>
+</html>v
