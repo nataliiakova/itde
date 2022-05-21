@@ -71,7 +71,7 @@ function initARContext()
 
   arMarkerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
     type: 'pattern',
-    patternUrl: 'pattern-ATLAS.patt',
+    patternUrl: 'https://raw.githubusercontent.com/nataliiakova/itde/main/pattern-ATLAS.patt',
     changeMatrixMode: 'cameraTransformMatrix'
   })
 
