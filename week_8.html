@@ -2,9 +2,10 @@
 <html>
 	<head><title>threeJS shaders</title></head>
 	<body>
-  <canvas id="Canvas"></canvas>
-  <script src="https://threejs.org/build/three.min.js"></script>
+		<canvas id="Canvas"></canvas>
+	<script src='https://threejs.org/build/three.js'></script>	<!-- include three.js library -->
 
+<!-- ��������� ������ -->
 <script type="x-shader/x-vertex" id="vertexShader">
 	uniform float delta;
 	void main() 
@@ -15,7 +16,7 @@
 	}   
 </script>
 
-
+<!-- ����������� ������ -->
 <script type="x-shader/x-fragment" id="fragmentShader">
 	uniform float delta;
 	void main()
@@ -40,7 +41,7 @@
 	var lightTwo=new THREE.PointLight(0xffff, 0.5);
 	scene.add(lightTwo);
 
-
+	// �������������� ������
 	var customUniforms={
 		delta: {value: 0}
 	};
